@@ -1,0 +1,13 @@
+<div class="delete-container">
+  <h2>Delete Cake</h2>
+  <div class="form-group">
+    <label for="cakeName">Cake Name:</label>
+    <select id="cakeName" name="cakeName" [(ngModel)]="selectedCakeName" required>
+      <option value="">Select Cake</option>
+      <option *ngFor="let cake of availableCakes" [value]="cake">{{ cake }}</option>
+    </select>
+  </div>
+  <button class="delete-button" (click)="deleteCake()">Delete Cake</button>
+  <div class="message" *ngIf="deleteSuccess">Cake deleted successfully!</div>
+  <div class="error-message" *ngIf="deleteError">Error deleting cake. Please try again.</div>
+</div>

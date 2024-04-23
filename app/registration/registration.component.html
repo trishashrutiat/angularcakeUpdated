@@ -1,0 +1,53 @@
+
+<body>
+    <div class="Container">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <h2>Haven't Tasted Yet?</h2>
+            <div class="content">
+                <div class="input-box">
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" ngModel #name="ngModel" id="name" placeholder="Enter full name" required>
+                    <span class="error" *ngIf="name.invalid && (name.dirty || name.touched)">Full Name is required.</span>
+                </div>
+                <div class="input-box">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" ngModel #username="ngModel" placeholder="Enter username" required>
+                    <span class="error" *ngIf="username.invalid && (username.dirty || username.touched)">Username is required.</span>
+                </div>
+                <div class="input-box">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" ngModel #email="ngModel" placeholder="Enter your valid email address" required email>
+                    <span class="error" *ngIf="email.invalid && (email.dirty || email.touched)">Please enter a valid email address.</span>
+                </div>
+                <div class="input-box">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" ngModel #phone="ngModel" placeholder="Enter phone number" required pattern="[0-9]{10}">
+                    <span class="error" *ngIf="phone.invalid && (phone.dirty || phone.touched)">Please enter a valid 10-digit phone number.</span>
+                </div>
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" ngModel #password="ngModel" placeholder="Enter your new password" required minlength="8">
+                    <span class="error" *ngIf="password.invalid && (password.dirty || password.touched)">Password must be at least 8 characters long.</span>
+                </div>
+                <div class="input-box">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" ngModel #confirmPassword="ngModel" placeholder="Confirm your password" required>
+                    <span class="error" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">Please confirm your password.</span>
+                    <span class="error" *ngIf="form.value.password !== form.value.confirm_password && (confirmPassword.dirty || confirmPassword.touched)">Passwords do not match.</span>
+                </div>
+            </div>
+            <div class="input-box gender-category">
+                <span class="gender-title">Gender</span>
+                <label><input type="radio" name="gender" ngModel #gender="ngModel" value="male" required>Male</label>
+                <label><input type="radio" name="gender" ngModel #gender="ngModel" value="female" required>Female</label>
+                <label><input type="radio" name="gender" ngModel #gender="ngModel" value="other" required>Other</label>
+                <span class="error" *ngIf="gender.invalid && (gender.dirty || gender.touched)">Please select your gender.</span>
+            </div>
+        
+            <div class="button-container">
+                <button type="submit" [disabled]="form.invalid">Ready to Taste!!</button>
+            </div>
+        </form>
+        
+    </div>
+</body>

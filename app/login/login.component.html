@@ -1,0 +1,52 @@
+
+<body>
+    <div class="box">
+        <div class="container">
+            <div class="top">
+            <h1>
+            <span> B</span>
+            <span> e</span>
+            <span> l</span>
+            <span> s</span>
+            <span>i</span>
+            <span> n</span>
+            <span> g</span>
+            <span> h</span>
+            <span>  B</span>
+            <span> a</span>
+            <span> k</span>
+            <span> e</span>
+            </h1>
+            
+            </div>
+<form (ngSubmit)="onSubmit()" [formGroup]="login">
+    <div class="input_box">
+        <input type="text" name="username" class="user-name" placeholder="USERNAME" formControlName="username">
+        <i class="bx bx-user"></i>
+        <div *ngIf="login.get('username')?.invalid && (login.get('username')?.dirty || login.get('username')?.touched)" class="text-danger">
+            <div *ngIf="login.get('username')?.errors?.['required']">Username is required.</div>
+        </div>
+    </div>
+    <div class="input_box">
+        <input type="password" name="password" class="pass" placeholder="PASSWORD" formControlName="password">
+        <i class="bx bx-lock-alt"></i>
+        <div *ngIf="login.get('password')?.invalid && (login.get('password')?.dirty || login.get('password')?.touched)" class="text-danger">
+            <div *ngIf="login.get('password')?.errors?.['required']">Password is required.</div>
+        </div>
+    </div>
+    <div class="input_box">
+        <input type="submit" name="pass" class="login" value="Login" [disabled]="!login.valid">
+    </div>
+    <div class="two-col">
+        <div class="one">
+            <input type="checkbox" name="" id="check">
+            <label for="check">Remember Me</label>
+        </div>
+        <div class="two">
+            <label for="" class="forget">
+                <a routerLink="/register">Don't have an Account?</a>
+                <a routerLink="/forgetpass">Forget Password</a>
+            </label>
+        </div>
+    </div>
+</form>

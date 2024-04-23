@@ -1,0 +1,52 @@
+<body>
+    <div #content>
+    <div class="container" id="container">
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <p let s1 of sList>Date:{{ getCurrentDate() }}     </p>
+            <p let s2 of sList>Time: {{ getCurrentTime() }}</p>
+            <button id="coupon-btn">Apply Coupon</button>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                <tr  *ngFor="let item of cartItems" >
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>Rs.{{ item.total }}</td>
+                </tr>
+            </table>
+            <div class="total">
+                <strong let s1 of sList>Total:Rs.{{ getTotalPrice()}}</strong> 
+            </div>
+        </div>
+        <div class="address-form">
+            <h2>Shipping Address</h2>
+            <form>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="address">Address:</label><br>
+                <textarea id="address" name="address" rows="4" required></textarea><br>
+                <label for="city">City:</label><br>
+                <input type="text" id="city" name="city" required><br>
+                <label for="zip">Zip Code:</label><br>
+                <input type="text" id="zip" name="zip" required><br>
+                <label for="country">Country:</label><br>
+                <input type="text" id="country" name="country" required><br><br>
+                
+                <h2>Shipping Method</h2>
+                <input type="radio" id="fast-delivery" name="shipping" value="fast" required>
+                <label for="fast-delivery">Fast Delivery</label><br>
+                <input type="radio" id="standard-delivery" name="shipping" value="standard" required>
+                <label for="standard-delivery">Standard Delivery</label><br><br>
+                
+                <qrcode [qrdata]="'hello world'" [allowEmptyString]="true"> </qrcode>
+
+                <button (click)="generatePDF()">Checkout</button>        
+            </form>
+        </div>
+    </div>
+</div>
+</body>

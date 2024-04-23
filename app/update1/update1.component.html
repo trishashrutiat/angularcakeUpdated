@@ -1,0 +1,27 @@
+<form action="/api/cakes" method="post" (submit)="onSubmit()">
+    <div>
+        <label for="image">Image:</label>
+        <input type="text" id="image" name="image" [(ngModel)]="cake.image"  required>
+    </div>
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="cake.name" required>
+    </div>
+    <div>
+        <label for="stars">Stars:</label>
+        <input type="number" id="stars" name="stars" [(ngModel)]="cake.rating.stars" required>
+    </div>
+    <div>
+        <label for="count">Count:</label>
+        <input type="number" id="count" name="count" [(ngModel)]="cake.rating.count" required>
+    </div>
+    <div>
+        <label for="priceCents">Price :</label>
+        <input type="number" id="priceCents" name="priceCents" [(ngModel)]="cake.priceCents" required>
+    </div>
+    <div>
+        <label for="keywords">Keywords:</label>
+        <input type="text" id="keywords" name="keywords" [(ngModel)]="cake.keywords" required>
+    </div>
+    <button type="submit">Add Cake</button>
+</form>
